@@ -1,4 +1,4 @@
-package squelette1FRog.src.gameCommons;
+package gameCommons;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,29 +7,29 @@ import javax.swing.Timer;
 
 import frog.Frog;
 import givenEnvironment.GivenEnvironment;
-import squelette1FRog.src.graphicalElements.FroggerGraphic;
-import squelette1FRog.src.graphicalElements.IFroggerGraphics;
+import graphicalElements.FroggerGraphic;
+import graphicalElements.IFroggerGraphics;
 
 public class Main {
 
 	public static void main(String[] args) {
 
-		//Caractï¿½ristiques du jeu
+		//Caractéristiques du jeu
 		int width = 26;
 		int height = 20;
 		int tempo = 100;
 		int minSpeedInTimerLoops = 3;
 		double defaultDensity = 0.2;
 		
-		//Crï¿½ation de l'interface graphique
+		//Création de l'interface graphique
 		IFroggerGraphics graphic = new FroggerGraphic(width, height);
-		//Crï¿½ation de la partie
+		//Création de la partie
 		Game game = new Game(graphic, width, height, minSpeedInTimerLoops, defaultDensity);
-		//Crï¿½ation et liason de la grenouille
+		//Création et liason de la grenouille
 		IFrog frog = new Frog(game);
 		game.setFrog(frog);
 		graphic.setFrog(frog);
-		//Crï¿½ation et liaison de l'environnement
+		//Création et liaison de l'environnement
 		IEnvironment env = new GivenEnvironment(game);
 		game.setEnvironment(env);
 				

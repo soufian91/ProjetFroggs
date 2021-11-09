@@ -1,4 +1,4 @@
-package squelette1FRog.src.graphicalElements;
+package graphicalElements;
 
 import javax.swing.*;
 

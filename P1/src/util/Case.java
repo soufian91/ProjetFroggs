@@ -1,4 +1,4 @@
-package squelette1FRog.src.util;
+package util;
 
 public class Case {
 	public final int absc;

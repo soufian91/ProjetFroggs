@@ -1,10 +1,10 @@
-package squelette1FRog.src.gameCommons;
+package gameCommons;
 
 import java.awt.Color;
 import java.util.Random;
 
-import squelette1FRog.src.graphicalElements.Element;
-import squelette1FRog.src.graphicalElements.IFroggerGraphics;
+import graphicalElements.Element;
+import graphicalElements.IFroggerGraphics;
 
 public class Game {
 
@@ -16,7 +16,7 @@ public class Game {
 	public final int minSpeedInTimerLoops;
 	public final double defaultDensity;
 
-	// Lien aux objets utilisï¿½s
+	// Lien aux objets utilisés
 	private IEnvironment environment;
 	private IFrog frog;
 	private IFroggerGraphics graphic;
@@ -30,7 +30,7 @@ public class Game {
 	 * @param height
 	 *            hauteur en cases
 	 * @param minSpeedInTimerLoop
-	 *            Vitesse minimale, en nombre de tour de timer avant dï¿½placement
+	 *            Vitesse minimale, en nombre de tour de timer avant déplacement
 	 * @param defaultDensity
 	 *            densite de voiture utilisee par defaut pour les routes
 	 */
@@ -44,7 +44,7 @@ public class Game {
 	}
 
 	/**
-	 * Lie l'objet frog ï¿½ la partie
+	 * Lie l'objet frog à la partie
 	 * 
 	 * @param frog
 	 */
@@ -70,7 +70,7 @@ public class Game {
 	}
 
 	/**
-	 * Teste si la partie est perdue et lance un ï¿½cran de fin appropriï¿½ si tel
+	 * Teste si la partie est perdue et lance un écran de fin approprié si tel
 	 * est le cas
 	 * 
 	 * @return true si le partie est perdue
@@ -81,10 +81,10 @@ public class Game {
 	}
 
 	/**
-	 * Teste si la partie est gagnee et lance un ï¿½cran de fin appropriï¿½ si tel
+	 * Teste si la partie est gagnee et lance un écran de fin approprié si tel
 	 * est le cas
 	 * 
-	 * @return true si la partie est gagnï¿½e
+	 * @return true si la partie est gagnée
 	 */
 	public boolean testWin() {
 		// TODO

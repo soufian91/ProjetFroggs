@@ -1,4 +1,4 @@
-package squelette1FRog.src.gameCommons;
+package gameCommons;
 
 import util.Case;
 import util.Direction;
@@ -12,13 +12,13 @@ public interface IFrog {
 	public Case getPosition();
 	
 	/**
-	 * Donne la direction de la grenouille, c'est ï¿½ dire de son dernier mouvement 
+	 * Donne la direction de la grenouille, c'est à dire de son dernier mouvement 
 	 * @return
 	 */
 	public Direction getDirection();
 	
 	/**
-	 * Dï¿½place la grenouille dans la direction donnï¿½e et teste la fin de partie
+	 * Déplace la grenouille dans la direction donnée et teste la fin de partie
 	 * @param key
 	 */
 	public void move(Direction key);

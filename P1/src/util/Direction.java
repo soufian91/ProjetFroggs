@@ -1,4 +1,4 @@
-package squelette1FRog.src.util;
+package util;
 
 public enum Direction {
 	up, down, right, left

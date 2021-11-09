@@ -1,17 +1,17 @@
-package squelette1FRog.src.graphicalElements;
+package graphicalElements;
 
 import gameCommons.IFrog;
 
 public interface IFroggerGraphics {
 	
 	/**
-	 * Ajoute l'ï¿½lï¿½ment aux ï¿½lï¿½ments ï¿½ afficher
+	 * Ajoute l'élément aux éléments à afficher
 	 * @param e
 	 */
     public void add(Element e);
     
     /**
-     * Enlï¿½ve tous les ï¿½lï¿½ments actuellement affichï¿½s
+     * Enlève tous les éléments actuellement affichés
      */
     public void clear();
     
@@ -21,14 +21,14 @@ public interface IFroggerGraphics {
     public void repaint();
     
     /**
-     * Lie la grenouille ï¿½ l'environneemnt graphique
+     * Lie la grenouille à l'environneemnt graphique
      * @param frog
      */
     public void setFrog(IFrog frog);
     
     /**
-     * Lance un ï¿½cran de fin de partie
-     * @param message le texte ï¿½ afficher
+     * Lance un écran de fin de partie
+     * @param message le texte à afficher
      */
     public void endGameScreen(String message);
 }
