@@ -12,6 +12,7 @@ public class Frog implements IFrog {
 	private Direction ladirection;
 
 	public  Frog (Game lapartie){
+		game = lapartie;
 		lacase = new Case(game.width/2, 0);
 		ladirection = Direction.up;
 	}
