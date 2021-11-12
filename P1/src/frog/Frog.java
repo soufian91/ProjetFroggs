@@ -19,11 +19,13 @@ public class Frog implements IFrog {
 
 	@Override
 	public Case getPosition() {
+
 		return lacase;
 	}
 
 	@Override
 	public Direction getDirection() {
+
 		return ladirection;
 	}
 
