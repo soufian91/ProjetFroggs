@@ -2,7 +2,7 @@ package environment;
 
 import java.awt.Color;
 
-import gameCommons.Case;
+import util.Case;
 import gameCommons.Game;
 import graphicalElements.Element;
 
@@ -29,10 +29,17 @@ public class Car {
 	public void DeplaceVoiture(){
 		if (leftToRight){
 			Case pos = new Case (getLeftPosition().absc+1,getLeftPosition().ord);
+			this.addToGraphics();
 		}else {
 			Case pos = new Case (getLeftPosition().absc-1,getLeftPosition().ord);
+			this.addToGraphics();
 		}
 	}
+	public void DeplacepasVoiture(){
+
+		this.addToGraphics();
+		}
+
 	//TODO : ajout de methodes
 
 	

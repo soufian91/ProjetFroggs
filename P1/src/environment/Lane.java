@@ -1,31 +1,53 @@
 package environment;
 
 import java.util.ArrayList;
+import java.util.Random;
 
-import gameCommons.Case;
+import util.Case;
 import gameCommons.Game;
 
 public class Lane {
 	private Game game;
 	private int ord;
 	private int speed;
-	private ArrayList<Car> cars = new ArrayList<>();
+	private ArrayList<Car> cars;
 	private boolean leftToRight;
 	private double density;
+	private int tic = 0;
 
 	// TODO : Constructeur(s)
-	public Lane(Game game,int ord,int speed,boolean leftToRight){
+	public Lane(Game game,int ord, double density) {
 		this.game = game;
 		this.ord = ord;
-		this.speed = speed;
-		this.leftToRight = leftToRight;
+		this.speed = setvitesseAlea(0, 2);
+		;
+		this.leftToRight = setRandomBoolean();
+		this.density = density;
+		this.cars = new ArrayList<>();
+		for (int i = 0; i < game.height; i++) {
+			mayAddCar();
+			for(Car c : cars){
+				c.DeplaceVoiture();
+			}
+		}
+	}
+	public Lane (Game game ,  int ord ){
+		this(game,ord, game.defaultDensity);
+
 	}
 
 	public void update() {
-			for (Car c :cars ) {
+		tic++;
+		if (tic == speed) {
+			for (Car c : cars) {
 				c.DeplaceVoiture();
 			}
-
+			tic = 0;
+		} else {
+			for (Car c : cars) {
+				c.DeplacepasVoiture();
+			}
+		}
 	}
 		// Toutes les voitures se d�placent d'une case au bout d'un nombre "tic
 		// d'horloge" �gal � leur vitesse
@@ -36,6 +58,13 @@ public class Lane {
 
 		// A chaque tic d'horloge, une voiture peut �tre ajout�e
 
+ public int setvitesseAlea(int Min, int Max){
+	 int x = (int) (Min + (Math.random() * (Max - Min)));
+	 return x;
+ }
+public boolean setRandomBoolean() {
+	return Math.random() < 0.5;
+}
 
 
 
@@ -57,9 +86,18 @@ public class Lane {
 		}
 	}
 // A FAIRE //
-	private boolean isSafe(Case firstCase) {
-		return true;
+	public boolean isSafe(Case firstCase) {
+		for (Car c : cars) {
+			if (firstCase != c.getLeftPosition()) {
+				return true;
+			}
+		}
+		return false;
 	}
+
+
+
+
 
 	private Case getFirstCase() {
 		if (leftToRight) {

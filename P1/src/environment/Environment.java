@@ -12,16 +12,31 @@ public class Environment implements IEnvironment {
 
     public Environment(Game game) {
         this.mapartie = game;
+        lesvoies.add(new Lane(game,0,0));
+        lesvoies.add(new Lane(game, game.height,0));
+        for (int i = 1; i < game.height -1 ;i++){
+            Lane l = new Lane(game,i);
+            lesvoies.add(l);
+        }
+
     }
 
     @Override
     public boolean isSafe(Case c) {
-        return false;
+        for (Lane l : lesvoies){
+            if (l.isSafe(c)){
+                return true;
+            }
+        }return false;
     }
 
     @Override
     public boolean isWinningPosition(Case c) {
-        return false;
+        if (c.ord == mapartie.height) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
