@@ -24,7 +24,7 @@ public class Lane {
 		this.leftToRight = setRandomBoolean();
 		this.density = density;
 		this.cars = new ArrayList<>();
-		for (int i = 0; i < game.height; i++) {
+		for (int i = 1; i < game.height-1; i++) {
 			mayAddCar();
 			for(Car c : cars){
 				c.DeplaceVoiture();
@@ -41,11 +41,14 @@ public class Lane {
 		if (tic == speed) {
 			for (Car c : cars) {
 				c.DeplaceVoiture();
+
+				
 			}
 			tic = 0;
 		} else {
 			for (Car c : cars) {
 				c.DeplacepasVoiture();
+
 			}
 		}
 	}
@@ -88,11 +91,11 @@ public boolean setRandomBoolean() {
 // A FAIRE //
 	public boolean isSafe(Case firstCase) {
 		for (Car c : cars) {
-			if (firstCase != c.getLeftPosition()) {
-				return true;
+			if (firstCase == c.getLeftPosition()) {
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 
 
@@ -112,5 +115,6 @@ public boolean setRandomBoolean() {
 		} else
 			return new Case(game.width, ord);
 	}
+
 
 }

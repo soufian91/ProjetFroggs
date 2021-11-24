@@ -90,7 +90,7 @@ public class Game {
 	 * @return true si la partie est gagn�e
 	 */
 	public boolean testWin() {
-		if(height == frog.getPosition().ord) {
+		if(environment.isWinningPosition(frog.getPosition())) {
 			graphic.endGameScreen("Victoire");
 			return true;
 		}

@@ -14,7 +14,7 @@ public class Environment implements IEnvironment {
         this.mapartie = game;
         lesvoies.add(new Lane(game,0,0));
         lesvoies.add(new Lane(game, game.height,0));
-        for (int i = 1; i < game.height -1 ;i++){
+        for (int i = 1; i < game.height -1  ;i++){
             Lane l = new Lane(game,i);
             lesvoies.add(l);
         }
@@ -24,10 +24,10 @@ public class Environment implements IEnvironment {
     @Override
     public boolean isSafe(Case c) {
         for (Lane l : lesvoies){
-            if (l.isSafe(c)){
-                return true;
+            if (!(l.isSafe(c))){
+                return false;
             }
-        }return false;
+        }return true;
     }
 
     @Override
@@ -45,5 +45,6 @@ public class Environment implements IEnvironment {
             laligne.update();
 
         }
+
     }
 }

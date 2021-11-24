@@ -18,7 +18,9 @@ public class Car {
 		this.game = game;
 		this.leftPosition = beforeFirstCase;
 		this.leftToRight = leftToRight;
+		this.length = Taillevoiturealeatoire(1,2);
 	}
+
 
 
 	public Case getLeftPosition() {
@@ -42,17 +44,33 @@ public class Car {
 
 	//TODO : ajout de methodes
 
-	
-	
+	public int Taillevoiturealeatoire(int Min , int Max){
+		int x = (int) (Min + (Math.random() * (Max - Min)));
+	 return x;
+		
+	}
+
+	/*public void removeToGraphics(){
+		if(leftToRight){
+		if(getLeftPosition().absc >game.width ){
+			this.remove();
+		}
+	}else{
+		if(getLeftPosition().absc < 0){
+			this.remove();
+		}
+	  }
+	}
+	*/
 	/* Fourni : addToGraphics() permettant d'ajouter un element graphique correspondant a la voiture*/
 	private void addToGraphics() {
-		for (int i = 0; i < length; i++) {
+		for (int i = 0; i < length-1; i++) {
 			Color color = colorRtL;
 			if (this.leftToRight){
 				color = colorLtR;
 			}
 			game.getGraphic()
-					.add(new Element(leftPosition.absc + i, leftPosition.ord, color));
+			.add(new Element(leftPosition.absc + i, leftPosition.ord, color));
 		}
 	}
 
