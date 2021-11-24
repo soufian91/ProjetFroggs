@@ -30,10 +30,10 @@ public class Car {
 	//TODO Constructeur(s)
 	public void DeplaceVoiture(){
 		if (leftToRight){
-			Case pos = new Case (getLeftPosition().absc+1,getLeftPosition().ord);
+			leftPosition = new Case (getLeftPosition().absc+1,getLeftPosition().ord);
 			this.addToGraphics();
 		}else {
-			Case pos = new Case (getLeftPosition().absc-1,getLeftPosition().ord);
+			leftPosition = new Case (getLeftPosition().absc-1,getLeftPosition().ord);
 			this.addToGraphics();
 		}
 	}
