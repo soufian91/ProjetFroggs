@@ -18,7 +18,7 @@ public class Lane {
 	public Lane(Game game,int ord, double density) {
 		this.game = game;
 		this.ord = ord;
-		this.speed = setvitesseAlea(0, 3);
+		this.speed = setvitesseAlea();
 		this.leftToRight = setRandomBoolean();
 		this.density = density;
 		this.cars = new ArrayList<>();
@@ -36,7 +36,7 @@ public class Lane {
 
 	public void update() {
 		tic++;
-		if (tic == speed) {
+		if (tic >= speed) {
 			for (Car c : cars) {
 				c.deplaceVoiture();
 
@@ -60,9 +60,8 @@ public class Lane {
 
 		// A chaque tic d'horloge, une voiture peut �tre ajout�e
 
- public int setvitesseAlea(int Min, int Max){
-	 int x = (int) (Min + (Math.random() * (Max - Min)));
-	 return x;
+ public int setvitesseAlea(){
+	 return game.randomGen.nextInt(2)+1;
  }
 public boolean setRandomBoolean() {
 	return Math.random() < 0.5;
