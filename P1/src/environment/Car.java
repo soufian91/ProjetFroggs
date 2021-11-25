@@ -17,7 +17,7 @@ public class Car {
 	public Car(Game game, Case pos, boolean leftToRight) {
 		this.game = game;
 		this.leftToRight = leftToRight;
-		this.length = Taillevoiturealeatoire(1,2);
+		this.length = taillevoiturealeatoire();
 		if (leftToRight) {
 			this.leftPosition = new Case(pos.absc - this.length, pos.ord);
 		} else {
@@ -36,10 +36,18 @@ public class Car {
 
 	//TODO : ajout de methodes
 
-	public int Taillevoiturealeatoire(int Min , int Max){
-		int x = (int) (Min + (Math.random() * (Max - Min)));
-	 return x;
-		
+	public int taillevoiturealeatoire(){
+		return game.randomGen.nextInt(2)+1;
+	}
+	public boolean casevoiutreegalcasefrog(Case c) {
+		if( !(leftPosition.ord == c.ord )) {
+			return false;
+		} else {
+			if( leftPosition.absc <= c.absc && leftPosition.absc + length > c.absc ) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/*public void removeToGraphics(){
@@ -56,7 +64,7 @@ public class Car {
 	*/
 	/* Fourni : addToGraphics() permettant d'ajouter un element graphique correspondant a la voiture*/
 	public void addToGraphics() {
-		for (int i = 0; i < length-1; i++) {
+		for (int i = 0; i < length; i++) {
 			Color color = colorRtL;
 			if (this.leftToRight){
 				color = colorLtR;

@@ -18,8 +18,7 @@ public class Lane {
 	public Lane(Game game,int ord, double density) {
 		this.game = game;
 		this.ord = ord;
-		this.speed = setvitesseAlea(0, 2);
-		;
+		this.speed = setvitesseAlea(0, 3);
 		this.leftToRight = setRandomBoolean();
 		this.density = density;
 		this.cars = new ArrayList<>();
@@ -43,6 +42,7 @@ public class Lane {
 
 				
 			}
+			mayAddCar();
 			tic = 0;
 		}
 		for (Car c : cars) {
@@ -88,9 +88,9 @@ public boolean setRandomBoolean() {
 		}
 	}
 // A FAIRE //
-	public boolean isSafe(Case firstCase) {
+	public boolean isSafe(Case lacase) {
 		for (Car c : cars) {
-			if (firstCase == c.getLeftPosition()) {
+			if (c.casevoiutreegalcasefrog(lacase)) {
 				return false;
 			}
 		}
