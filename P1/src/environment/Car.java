@@ -1,10 +1,10 @@
 package environment;
 
-import java.awt.Color;
-
-import util.Case;
 import gameCommons.Game;
 import graphicalElements.Element;
+import util.Case;
+
+import java.awt.*;
 
 public class Car {
 	private Game game;
@@ -14,11 +14,15 @@ public class Car {
 	private final Color colorLtR = Color.BLACK;
 	private final Color colorRtL = Color.BLUE;
 
-	public Car(Game game, Case beforeFirstCase, boolean leftToRight) {
+	public Car(Game game, Case pos, boolean leftToRight) {
 		this.game = game;
-		this.leftPosition = beforeFirstCase;
 		this.leftToRight = leftToRight;
 		this.length = Taillevoiturealeatoire(1,2);
+		if (leftToRight) {
+			this.leftPosition = new Case(pos.absc - this.length, pos.ord);
+		} else {
+			this.leftPosition = new Case(pos.absc, pos.ord);
+		}
 	}
 
 
@@ -28,19 +32,7 @@ public class Car {
 	}
 
 	//TODO Constructeur(s)
-	public void DeplaceVoiture(){
-		if (leftToRight){
-			leftPosition = new Case (getLeftPosition().absc+1,getLeftPosition().ord);
-			this.addToGraphics();
-		}else {
-			leftPosition = new Case (getLeftPosition().absc-1,getLeftPosition().ord);
-			this.addToGraphics();
-		}
-	}
-	public void DeplacepasVoiture(){
 
-		this.addToGraphics();
-		}
 
 	//TODO : ajout de methodes
 
@@ -63,7 +55,7 @@ public class Car {
 	}
 	*/
 	/* Fourni : addToGraphics() permettant d'ajouter un element graphique correspondant a la voiture*/
-	private void addToGraphics() {
+	public void addToGraphics() {
 		for (int i = 0; i < length-1; i++) {
 			Color color = colorRtL;
 			if (this.leftToRight){
@@ -72,6 +64,19 @@ public class Car {
 			game.getGraphic()
 					.add(new Element(leftPosition.absc + i, leftPosition.ord, color));
 		}
+	}
+	public void deplaceVoiture(){
+		if (this.leftToRight ){
+			this.leftPosition = new Case (this.leftPosition.absc+1 , this.leftPosition.ord);
+			this.addToGraphics();
+		}else {
+			this.leftPosition = new Case (this.leftPosition.absc-1 , this.leftPosition.ord);
+			this.addToGraphics();
+		}
+	}
+	public void deplacepasVoiture(){
+
+		this.addToGraphics();
 	}
 
 }

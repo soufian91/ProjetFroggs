@@ -1,10 +1,9 @@
 package environment;
 
-import java.util.ArrayList;
-import java.util.Random;
-
-import util.Case;
 import gameCommons.Game;
+import util.Case;
+
+import java.util.ArrayList;
 
 public class Lane {
 	private Game game;
@@ -27,7 +26,7 @@ public class Lane {
 		for (int i = 1; i < game.height-1; i++) {
 			mayAddCar();
 			for(Car c : cars){
-				c.DeplaceVoiture();
+				c.deplaceVoiture();
 			}
 		}
 	}
@@ -40,18 +39,18 @@ public class Lane {
 		tic++;
 		if (tic == speed) {
 			for (Car c : cars) {
-				c.DeplaceVoiture();
+				c.deplaceVoiture();
 
 				
 			}
 			tic = 0;
-		} else {
-			for (Car c : cars) {
-				c.DeplacepasVoiture();
+		}
+		for (Car c : cars) {
+			c.addToGraphics();
 
 			}
 		}
-	}
+
 		// Toutes les voitures se d�placent d'une case au bout d'un nombre "tic
 		// d'horloge" �gal � leur vitesse
 		// Notez que cette m�thode est appel�e � chaque tic d'horloge
