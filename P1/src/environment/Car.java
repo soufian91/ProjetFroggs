@@ -82,9 +82,6 @@ public class Car {
 			this.addToGraphics();
 		}
 	}
-	public void deplacepasVoiture(){
 
-		this.addToGraphics();
-	}
 
 }
