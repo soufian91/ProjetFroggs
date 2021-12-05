@@ -1,16 +1,12 @@
 package gameCommons;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.Timer;
-
-import environment.Environment;
-import frog.Frog;
-import givenEnvironment.GivenEnvironment;
+import frog.FrogInf;
 import graphicalElements.FroggerGraphic;
 import graphicalElements.IFroggerGraphics;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 public class Main {
 
 	public static void main(String[] args) {
@@ -27,11 +23,11 @@ public class Main {
 		//Cr�ation de la partie
 		Game game = new Game(graphic, width, height, minSpeedInTimerLoops, defaultDensity);
 		//Cr�ation et liason de la grenouille
-		IFrog frog = new Frog(game);
+		FrogInf frog = new FrogInf(game);
 		game.setFrog(frog);
 		graphic.setFrog(frog);
 		//Cr�ation et liaison de l'environnement
-		IEnvironment env = new Environment(game);
+		EnvInf env = new EnvInf(game, frog);
 		game.setEnvironment(env);
 				
 		//Boucle principale : l'environnement s'acturalise tous les tempo milisecondes

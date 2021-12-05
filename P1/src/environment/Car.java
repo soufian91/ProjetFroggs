@@ -82,6 +82,17 @@ public class Car {
 			this.addToGraphics();
 		}
 	}
+	public void changeOrd() {
+		this.leftPosition = new Case(this.leftPosition.absc, 0);
+	}
+
+	public void orderUp() {
+		this.leftPosition = new Case(this.leftPosition.absc, this.leftPosition.ord + 1);
+	}
+
+	public void orderDown() {
+		this.leftPosition = new Case(this.leftPosition.absc, this.leftPosition.ord - 1);
+	}
 
 
 }

@@ -7,50 +7,50 @@ import util.Direction;
 
 public class Frog implements IFrog {
 	
-	private Game game;
-	private Case lacase;
-	private Direction ladirection;
+	protected Game game;
+	protected Case position;
+	protected Direction direction;
 
 	public  Frog (Game lapartie){
 		game = lapartie;
-		lacase = new Case(game.width/2, 0);
-		ladirection = Direction.up;
+		position = new Case(game.width/2, 0);
+		direction = Direction.up;
 	}
 
 
 	@Override
 	public Case getPosition() {
 
-		return lacase;
+		return position;
 	}
 
 	@Override
 	public Direction getDirection() {
 
-		return ladirection;
+		return direction;
 	}
 
 	@Override
 	public void move(Direction key) {
 		switch (key){
 			case up:
-				lacase = new Case(getPosition().absc, getPosition().ord + 1 ); // mise a jour de case
-				ladirection = key;
+				position = new Case(getPosition().absc, getPosition().ord + 1 ); // mise a jour de case
+				direction = key;
 				break;
 
 			case down:
-				lacase = new Case(getPosition().absc, getPosition().ord - 1 ); // mise a jour de case
-				ladirection = key;
+				position = new Case(getPosition().absc, getPosition().ord - 1 ); // mise a jour de case
+				direction = key;
 				break;
 
 			case right:
-				lacase = new Case(getPosition().absc +1, getPosition().ord);
-				ladirection = key;
+				position = new Case(getPosition().absc +1, getPosition().ord);
+				direction = key;
 				break;
 
 			case left:
-				lacase =  new Case(getPosition().absc -1, getPosition().ord);
-				ladirection = key;
+				position =  new Case(getPosition().absc -1, getPosition().ord);
+				direction = key;
 				break;
 
 		}

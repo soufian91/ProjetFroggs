@@ -24,8 +24,8 @@ public class Lane {
 		this.cars = new ArrayList<>();
 		for (int i = 1; i < game.height-1; i++) {
 			mayAddCar();
-			for(Car c : cars){
-				c.deplaceVoiture();
+			for(Car voiture : cars){
+				voiture.deplaceVoiture();
 			}
 		}
 	}
@@ -33,20 +33,23 @@ public class Lane {
 		this(game,ord, game.defaultDensity);
 
 	}
+	public ArrayList<Car> getCars() {
+		return this.cars;
+	}
 
 	public void update() {
 		tic++;
 		if (tic >= speed) {
-			for (Car c : cars) {
-				c.deplaceVoiture();
+			for (Car voiture : cars) {
+				voiture.deplaceVoiture();
 
 				
 			}
 			mayAddCar();
 			tic = 0;
 		}
-		for (Car c : cars) {
-			c.addToGraphics();
+		for (Car voiture : cars) {
+			voiture.addToGraphics();
 
 			}
 		}
@@ -88,8 +91,8 @@ public boolean setRandomBoolean() {
 	}
 // A FAIRE //
 	public boolean isSafe(Case lacase) {
-		for (Car c : cars) {
-			if (c.casevoiutreegalcasefrog(lacase)) {
+		for (Car voiture : cars) {
+			if (voiture.casevoiutreegalcasefrog(lacase)) {
 				return false;
 			}
 		}
@@ -112,6 +115,21 @@ public boolean setRandomBoolean() {
 			return new Case(-1, ord);
 		} else
 			return new Case(game.width, ord);
+	}
+	public void orderUp() {
+		this.ord = ord +1;
+	}
+
+	public void orderDown() {
+		this.ord = ord -1;
+	}
+
+	public int getOrd() {
+		return this.ord;
+	}
+
+	public void changeOrd() {
+		this.ord = 0;
 	}
 
 

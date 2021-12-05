@@ -1,10 +1,15 @@
 package gameCommons;
 
-import java.awt.Color;
-import java.util.Random;
-
+import frog.FrogInf;
 import graphicalElements.Element;
 import graphicalElements.IFroggerGraphics;
+
+import java.awt.*;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
+
 
 public class Game {
 
@@ -17,9 +22,12 @@ public class Game {
 	public final double defaultDensity;
 
 	// Lien aux objets utilis�s
-	private IEnvironment environment;
-	private IFrog frog;
+	private EnvInf environment;
+	private FrogInf frog;
 	private IFroggerGraphics graphic;
+	Timer time = new Timer();
+	float temps = 0;
+
 
 	/**
 	 * 
@@ -41,6 +49,14 @@ public class Game {
 		this.height = height;
 		this.minSpeedInTimerLoops = minSpeedInTimerLoop;
 		this.defaultDensity = defaultDensity;
+		time.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				temps++;
+			}
+		},1000,1000);
+
+
 	}
 
 	/**
@@ -48,7 +64,7 @@ public class Game {
 	 * 
 	 * @param frog
 	 */
-	public void setFrog(IFrog frog) {
+	public void setFrog(FrogInf frog) {
 		this.frog = frog;
 	}
 
@@ -57,7 +73,7 @@ public class Game {
 	 * 
 	 * @param environment
 	 */
-	public void setEnvironment(IEnvironment environment) {
+	public void setEnvironment(EnvInf environment) {
 		this.environment = environment;
 	}
 
@@ -77,7 +93,9 @@ public class Game {
 	 */
 	public boolean testLose() {
 		if (environment.isSafe(frog.getPosition()) == false) {
-			graphic.endGameScreen("Defaite");
+			time.cancel();
+			graphic.endGameScreen("Defaite  " + "Score: " + frog.getScore() + " Temps: " + temps);
+
 			return true;
 		}
 		return false;
@@ -106,7 +124,15 @@ public class Game {
 		environment.update();
 		this.graphic.add(new Element(frog.getPosition(), Color.GREEN));
 		testLose();
-		testWin();
+		//testWin();
+	}
+	public void environmentUp() {
+		graphic.clear();
+		environment.moveUp();
+	}
+
+	public void environmentDown() {
+		environment.moveDown();
 	}
 
 }

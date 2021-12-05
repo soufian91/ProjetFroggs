@@ -3,15 +3,18 @@ package environment;
 import gameCommons.Game;
 import gameCommons.IEnvironment;
 import util.Case;
+import frog.FrogInf;
 
 import java.util.ArrayList;
 
 public class Environment implements IEnvironment {
-    private ArrayList<Lane> lesvoies = new ArrayList<>();
-    private Game mapartie;
+    protected ArrayList<Lane> lesvoies = new ArrayList<>();
+    protected Game game;
+    protected FrogInf frog;
 
-    public Environment(Game game) {
-        this.mapartie = game;
+    public Environment(Game game,FrogInf frog) {
+        this.game = game;
+        this.frog = frog;
         lesvoies.add(new Lane(game,0,0));
         lesvoies.add(new Lane(game, game.height,0));
         for (int i = 1; i < game.height -1  ;i++){
@@ -32,7 +35,7 @@ public class Environment implements IEnvironment {
 
     @Override
     public boolean isWinningPosition(Case c) {
-        if (c.ord == mapartie.height) {
+        if (c.ord == game.height) {
             return true;
         } else {
             return false;
@@ -46,5 +49,8 @@ public class Environment implements IEnvironment {
 
         }
 
+    }
+    public Game getGame() {
+        return this.game;
     }
 }
